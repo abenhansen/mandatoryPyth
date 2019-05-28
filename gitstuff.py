@@ -17,20 +17,21 @@ def get_rep_names():
     return data
 
 def get_githubs_reps():
-    os.mkdir('reps')
+    if not os.path.exists('reps'):
+        os.makedirs('reps')
     os.chdir('reps')
     if (get_rep_names()==os.listdir()):
-        for j in os.listdir("C:/Users/abenh/PycharmProjects/mandatoryPyth/reps"):
+        for j in os.listdir():
             os.chdir(j)
             subprocess.run(['git', 'pull'])
-            os.chdir("C:/Users/abenh/PycharmProjects/mandatoryPyth/reps")
+            os.chdir("../")
     else:
         for i in get_data():
             subprocess.run(['git','clone',i])
 
 
 def push_git():
-    os.chdir("C:/Users/abenh/PycharmProjects/mandatoryPyth/ReadingRepo")
+    os.chdir("../ReadingRepo")
     path = os.getcwd()
     subprocess.run(['git', 'init',path])
     subprocess.run(['git','remote', 'add', 'origin', "https://github.com/abenhansen/mandatory1"])

@@ -29,7 +29,9 @@ def write_to_file():
     # filter(None, required_list)
     final_list = []
     os.chdir("C:/Users/abenh/PycharmProjects/mandatoryPyth")
-    os.mkdir("ReadingRepo")
+    if not os.path.exists('ReadingRepo'):
+        os.makedirs('ReadingRepo')
+    # os.mkdir("ReadingRepo")
     os.chdir("C:/Users/abenh/PycharmProjects/mandatoryPyth/ReadingRepo")
     with open("C:/Users/abenh/PycharmProjects/mandatoryPyth/ReadingRepo/required_reading.md", 'w+') as file_handler:
                 for i in required_list:
